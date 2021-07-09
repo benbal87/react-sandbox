@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../App.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { createStructuredSelector } from 'reselect'
 import { selectCounterValue } from '../redux/counter/counter.selector'
 import { connect } from 'react-redux'
@@ -31,4 +31,4 @@ const mapStateToProps = createStructuredSelector({
     counterValue: selectCounterValue
 })
 
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps)(Nav))

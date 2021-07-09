@@ -5,12 +5,12 @@ import About from './components/About'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import NotFound from './components/NotFound'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import style from './App.module.scss'
 
 function App() {
     return (
-        <Router>
+        <BrowserRouter>
             <div className={ style.App }>
                 <Nav />
                 <Switch>
@@ -33,7 +33,7 @@ function App() {
                            component={ NotFound } />
                 </Switch>
             </div>
-        </Router>
+        </BrowserRouter>
     )
 }
 
