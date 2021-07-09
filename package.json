@@ -32,8 +32,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
-        "test-quit": "react-scripts test --watchAll=false",
+        "test": "react-scripts test --coverage",
+        "test-quit": "react-scripts test --watchAll=false --coverage",
         "eject": "react-scripts eject",
         "lint": "eslint src",
         "prepare": "husky install"
@@ -68,7 +68,7 @@
     "lint-staged": {
         "**/*.{js,jsx,ts,tsx}": [
             "npm run lint",
-            "npm test-quit"
+            "npm run test-quit"
         ]
     }
 }
