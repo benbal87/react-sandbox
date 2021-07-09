@@ -22,6 +22,7 @@
         "react-redux": "^7.2.4",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.3",
+        "react-toastify": "^7.0.4",
         "redux-logger": "^3.0.6",
         "redux-persist": "^6.0.0",
         "reselect": "^4.0.0",
@@ -32,8 +33,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --coverage",
-        "test-quit": "react-scripts test --watchAll=false --coverage",
+        "test": "react-scripts test --coverage --findRelatedTests --bail --verbose --watchAll=false",
         "eject": "react-scripts eject",
         "lint": "eslint src",
         "prepare": "husky install"
@@ -68,7 +68,7 @@
     "lint-staged": {
         "**/*.{js,jsx,ts,tsx}": [
             "npm run lint",
-            "npm run test-quit"
+            "npm run test"
         ]
     }
 }

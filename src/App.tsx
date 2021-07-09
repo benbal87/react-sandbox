@@ -6,6 +6,8 @@ import Home from './components/Home'
 import Nav from './components/Nav'
 import NotFound from './components/NotFound'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import style from './App.module.scss'
 
 function App() {
@@ -32,6 +34,7 @@ function App() {
                     <Route path="*"
                            component={ NotFound } />
                 </Switch>
+                <ToastContainer />
             </div>
         </BrowserRouter>
     )
