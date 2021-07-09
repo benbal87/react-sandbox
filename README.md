@@ -1,3 +1,7 @@
+# React Sandbox
+
+This project was created mainly for make little example implementation of react and redux concepts.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
