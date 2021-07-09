@@ -34,7 +34,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --coverage --findRelatedTests --bail --verbose --watchAll=false",
-        "test-all": "react-scripts test",
+        "test-all": "react-scripts test --coverage",
         "eject": "react-scripts eject",
         "lint": "eslint src",
         "prepare": "husky install"
@@ -59,7 +59,18 @@
     },
     "devDependencies": {
         "husky": "^7.0.0",
-        "lint-staged": "^11.0.0"
+        "lint-staged": "^11.0.0",
+        "prettier": "^2.3.2"
+    },
+    "prettier": {
+        "trailingComma": "none",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true,
+        "jsxSingleQuote": true,
+        "jsxBracketSameLine": true,
+        "arrowParens": "avoid",
+        "printWidth": 100
     },
     "husky": {
         "hooks": {
@@ -67,9 +78,10 @@
         }
     },
     "lint-staged": {
-        "**/*.{js,jsx,ts,tsx}": [
+        "{**/*,*}.{js,ts,jsx,tsx,css,scss,sass}": [
             "npm run lint",
-            "npm run test"
+            "npm run test",
+            "prettier --write"
         ]
     }
 }
