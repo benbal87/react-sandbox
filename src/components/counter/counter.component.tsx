@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import {
@@ -14,9 +14,21 @@ import styles from './counter.module.css'
 export function Counter() {
     const count = useAppSelector(selectCount)
     const dispatch = useAppDispatch()
-    const [incrementAmount, setIncrementAmount] = useState('2')
+    const [incrementAmount, setIncrementAmount] = useState<string>('2')
+    const [incrementValue, setIncrementValue] = useState<number>(0)
 
-    const incrementValue = Number(incrementAmount) || 0
+    useEffect(() => {
+        return () => {
+            console.log('useEffect return function called')
+        }
+    }, [])
+
+    useEffect(() => {
+        setIncrementValue(Number(incrementAmount) ?? 0)
+        return () => {
+            console.log('useEffect - setIncrementValue - return function called')
+        }
+    }, [incrementAmount])
 
     return (
         <div>

@@ -1,16 +1,20 @@
 import React from 'react'
 import style from '../App.module.scss'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { createStructuredSelector } from 'reselect'
 import { selectCounterValue } from '../redux/counter/counter.selector'
-import { connect } from 'react-redux'
+import { connect, ConnectedProps } from 'react-redux'
 import { toast } from 'react-toastify'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
+import IconMagnifier from '../images/icon-magnifier.svg'
 
-type NavProps = {
-    counterValue: number
+export interface NavProps extends NavPropsFromRedux {
+    test2?: string
+    test: string
 }
 
-function Nav({ counterValue }: NavProps) {
+function Nav({ counterValue, test }: NavProps) {
     const makeToaster = () => {
         toast.info('🦄 Wow so easy!', {
             position: 'top-right',
@@ -24,14 +28,30 @@ function Nav({ counterValue }: NavProps) {
     }
     return (
         <nav>
-            <h3>Logo { counterValue ?? 0 }</h3>
+            <h3>Logo { counterValue ?? 0 } { test }</h3>
             <ul className={ style.nav_links }>
-                <Link className={ style.link }
-                      to="/about">
+                <IconMagnifier style={ {
+                    fill: 'red',
+                    width: 20,
+                    height: 20
+                } } />
+                <FontAwesomeIcon icon={ faFileAlt } size={ '2x' } />
+                <Link
+                    className={ style.link }
+                    to="/"
+                >
+                    <li>Home</li>
+                </Link>
+                <Link
+                    className={ style.link }
+                    to="/about"
+                >
                     <li>About</li>
                 </Link>
-                <Link className={ style.link }
-                      to="/shop">
+                <Link
+                    className={ style.link }
+                    to="/shop"
+                >
                     <li>Shop</li>
                 </Link>
                 <li>
@@ -46,4 +66,8 @@ const mapStateToProps = createStructuredSelector({
     counterValue: selectCounterValue
 })
 
-export default withRouter(connect(mapStateToProps)(Nav))
+const connector = connect(mapStateToProps)
+
+export type NavPropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Nav)
