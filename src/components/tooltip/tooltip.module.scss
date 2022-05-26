@@ -1,0 +1,34 @@
+@import '../../styles/variables.module';
+
+@mixin arrow($placement, $color) {
+  &[data-placement^='#{$placement}'] > .tippy-arrow::before {
+    border-#{$placement}-color: $color;
+    filter: map-get(
+      (
+        top: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.3)),
+        right: drop-shadow(-3px 0px 2px rgba(0, 0, 0, 0.2)),
+        bottom: drop-shadow(0px -1px 1px rgba(0, 0, 0, 0.1)),
+        left: drop-shadow(2px 0px 1px rgba(0, 0, 0, 0.1))
+      ),
+      $placement
+    );
+  }
+}
+
+@mixin tooltip($bgColor, $color, $shadow, $theme) {
+  .tippy-box[data-theme~='#{$theme}'] {
+    padding: 10px;
+    background-color: $bgColor;
+    color: $color;
+    box-shadow: $shadow;
+    @include arrow('top', $bgColor);
+    @include arrow('right', $bgColor);
+    @include arrow('bottom', $bgColor);
+    @include arrow('left', $bgColor);
+  }
+}
+
+:global {
+  @include tooltip($text-color-6, $text-color-7, $box-shadow-1, 'grey-theme');
+  @include tooltip($text-color-8, white, $box-shadow-1, 'blue-theme');
+}
