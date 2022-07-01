@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import ReactSelect from 'react-select'
+import ReactSelect, {
+  ActionMeta,
+  InputActionMeta,
+  MultiValue,
+  Theme
+} from 'react-select'
 import CreatableSelect from 'react-select/creatable'
-import { ActionMeta, MultiValue, InputActionMeta } from 'react-select'
 import style from './react-select-example.module.scss'
 import { ReactSelectOption } from './react-select-example.types'
 import { groceriesOptions } from './react-select-example.constants'
@@ -51,6 +55,29 @@ function ReactSelectExample() {
     <div className={style.container}>
       <h1>React Select Tryout</h1>
       <div className={style.select_inputs_container}>
+        <div className={style.select_container}>
+          <div className={style.title}>
+            <span>React Select</span>
+            <span>custom style</span>
+          </div>
+
+          <ReactSelect
+            value={groceries}
+            defaultValue={[groceriesOptions[2], groceriesOptions[12]]}
+            options={groceriesOptions}
+            placeholder={'Select from groceries...'}
+            theme={(theme: Theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+                ...theme.colors,
+                primary25: 'hotpink',
+                primary: 'black'
+              }
+            })}
+          />
+        </div>
+
         <div className={style.select_container}>
           <div className={style.title}>
             <span>ReactSelect</span>
