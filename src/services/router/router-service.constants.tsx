@@ -20,6 +20,9 @@ const ReactSelectExample = lazy(
 const SaveDomImage = lazy(
   () => import('components/save-dom-image/save-dom-image.component')
 )
+const LoadPicture = lazy(
+  () => import('components/load-picture/load-picture.component')
+)
 const NotFoundComponent = lazy(
   () => import('components/not-found/not-found.component')
 )
@@ -34,6 +37,7 @@ export enum RouterKeys {
   DATE_RANGE_PICKER = 'date-range-picker',
   REACT_SELECT_EXAMPLE = 'react-select-example',
   SAVE_DOM_IMAGE = 'save-dom-image',
+  LOAD_PICTURE = 'load-picture',
   NOT_FOUND = 'not-found'
 }
 
@@ -82,6 +86,11 @@ export const RouterSettings: RouterSettingsType = {
     routePattern: '/save-dom-image',
     title: 'Save Dom Image',
     component: SaveDomImage
+  },
+  [RouterKeys.LOAD_PICTURE]: {
+    routePattern: '/load-picture',
+    title: 'Load Picture',
+    component: LoadPicture
   },
   [RouterKeys.NOT_FOUND]: {
     routePattern: '*',
